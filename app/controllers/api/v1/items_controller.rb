@@ -19,6 +19,6 @@ class Api::V1::ItemsController < Api::V1::BaseController
 
   private
   def item_params
-     params.require(:item).permit(:id, :name, :description)
+     params.require(:item).permit(:id, :name, :description, :amount, :is_paid)
   end
 end

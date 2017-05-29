@@ -9,7 +9,7 @@ var AllItems = React.createClass({
   handleDelete(id){
     this.props.handleDelete(id);
   },
-  
+
     render() {
       var items = this.props.items.map((item) => {
       return (
