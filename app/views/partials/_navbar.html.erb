@@ -5,7 +5,14 @@
     <div class="col-xs-2">
         <li>Post a Listing</li>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-3">
       <li>About</li>
     </div>
+    <% if house_signed_in? %>
+  <li><%= link_to 'Logout', destroy_house_session_path, :method => :delete %></li>
+  <li><%=current_house.id%></li>
+  <% else %>
+      <li><%= link_to 'Sign in', new_house_session_path %></li>
+      <li><%= link_to "Sign up now!",  new_house_registration_path%></li>
+    <% end %>
 </nav>

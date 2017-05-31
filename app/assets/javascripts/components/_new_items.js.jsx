@@ -2,14 +2,20 @@
 var NewItem = React.createClass({
 
 handleClick() {
+  var house = this.props.house;
   var name = this.refs.name.value;
   var description = this.refs.description.value;
   var amount = this.refs.amount.value;
   var is_paid = false;
+  var house_id = house.id;
+  var item = {house_id: house_id, name: name,
+    description: description, amount: amount,
+    is_paid: is_paid};
+    console.log('in click', item);
   $.ajax({
     url:'/api/v1/items',
     type: 'POST',
-    data: {item: {name: name, description: description, amount: amount, is_paid: is_paid} },
+    data: {item},
     success: (item) => {
       this.props.handleSubmit(item);
     }
@@ -19,15 +25,10 @@ handleClick() {
   render() {
     return (
       <div>
-        <div className ="row">
           <input ref ='name' placeholder='enter item name' />
           <input ref='description' placeholder='describe it'/>
-        </div>
-        <div className ="row">
-
           <input ref='amount' placeholder='enter amount'/>
           <button onClick={this.handleClick}>Submit</button>
-      </div>
       </div>
     )
   }

@@ -1,1 +1,5 @@
-<%= react_component 'Main'%>
+<% if current_house%>
+<%= react_component 'Main', {house: current_house}%>
+<%else%>
+<h1>please log in to see your house</h1>
+<%end%>

@@ -4,7 +4,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    respond_with :api, :v1, User.create(user_params)
+    respond_with :api, :v1, User.create(create_user_params)
   end
 
   def destroy
@@ -13,12 +13,15 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def update
     user = User.find(params["id"])
-    user.update_attributes(user_params)
+    user.update_attributes(update_user_params)
     respond_with user, json: user
   end
 
   private
-  def user_params
+  def create_user_params
      params.require(:user).permit(:id, :name, :total_debt, :house_id)
+  end
+  def update_user_params
+     params.permit(:total_debt)
   end
 end

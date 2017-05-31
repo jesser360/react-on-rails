@@ -7,14 +7,18 @@ var AllUsers = React.createClass({
   },
 
   render(){
+  var house=this.props.house;
     var users = this.props.users.map((user) => {
-      return (
-        <div key={user.id}>
-        <User user={user}
-        handleDeleteUser={this.handleDeleteUser.bind(this, user.id)}/>
-        </div>
-      )
-    });
+      if(user.house_id == house.id){
+        return (
+          <div key={user.id}>
+          <User user={user}
+          handleDeleteUser={this.handleDeleteUser.bind(this, user.id)}/>
+          </div>
+        )
+      };
+      });
+
 
     return(
     <div>
