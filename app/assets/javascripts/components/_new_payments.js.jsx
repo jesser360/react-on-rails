@@ -10,6 +10,7 @@ var NewPayment = React.createClass({
   var amount = this.refs.amount.value;
   var newUser = {house_id: house_id, total_debt: amount};
   var payment = {house_id: house_id, payer_id: payer_id, in_debter_id: in_debter_id, item_id: item_id, amount: amount};
+      console.log('clicked', payment);
     $.ajax({
       url:'/api/v1/payments',
       type: 'POST',
